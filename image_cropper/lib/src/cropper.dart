@@ -59,6 +59,7 @@ class ImageCropper {
     ImageCompressFormat compressFormat = ImageCompressFormat.jpg,
     int compressQuality = 90,
     List<PlatformUiSettings>? uiSettings,
+    String countTitle = '',
   }) {
     return platform.cropImage(
       sourcePath: sourcePath,
@@ -68,6 +69,7 @@ class ImageCropper {
       compressFormat: compressFormat,
       compressQuality: compressQuality,
       uiSettings: uiSettings,
+      countTitle: countTitle,
     );
   }
 
