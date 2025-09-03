@@ -32,6 +32,7 @@
         NSArray *aspectRatioPresets = call.arguments[@"ios.aspect_ratio_presets"];
         NSNumber *compressQuality = call.arguments[@"compress_quality"];
         NSString *compressFormat = call.arguments[@"compress_format"];
+        NSString *countTitle = call.arguments[@"count_title"];
         BOOL embedInNavigationController = call.arguments[@"ios.embed_in_navigation_controller"];
 
         UIImage *image = [UIImage imageWithContentsOfFile:sourcePath];
@@ -56,6 +57,9 @@
             _compressFormat = @"jpg";
         }
 
+        // sony
+        cropViewController.countTitle = countTitle;
+
         NSMutableArray *allowedAspectRatios = [NSMutableArray new];
         NSString* customAspectRatioName;
         NSDictionary* customAspectRatioData;
@@ -79,6 +83,10 @@
             }
         }
         cropViewController.allowedAspectRatios = allowedAspectRatios;
+
+        // sony
+        cropViewController.aspectRatioPreset = [self parseAspectRatioPresetFromName:aspectRatioPresets.firstObject];
+        //
 
         [self setupUiCustomizedOptions:call.arguments forViewController:cropViewController];
 
