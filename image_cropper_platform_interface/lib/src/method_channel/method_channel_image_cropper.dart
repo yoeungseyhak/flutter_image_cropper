@@ -50,6 +50,7 @@ class MethodChannelImageCropper extends ImageCropperPlatform {
     ImageCompressFormat compressFormat = ImageCompressFormat.jpg,
     int compressQuality = 90,
     List<PlatformUiSettings>? uiSettings,
+    String countTitle = "",
   }) async {
     assert(await File(sourcePath).exists());
     assert(maxWidth == null || maxWidth > 0);
@@ -64,6 +65,7 @@ class MethodChannelImageCropper extends ImageCropperPlatform {
       'ratio_y': aspectRatio?.ratioY,
       'compress_format': compressFormat.name,
       'compress_quality': compressQuality,
+      "count_title": countTitle,
     };
 
     if (uiSettings != null) {
@@ -72,8 +74,10 @@ class MethodChannelImageCropper extends ImageCropperPlatform {
       }
     }
 
-    final String? resultPath =
-        await _channel.invokeMethod('cropImage', arguments);
+    final String? resultPath = await _channel.invokeMethod(
+      'cropImage',
+      arguments,
+    );
     return resultPath == null ? null : CroppedFile(resultPath);
   }
 
