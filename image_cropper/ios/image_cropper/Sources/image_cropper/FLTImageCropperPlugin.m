@@ -346,4 +346,26 @@
     return scaledImage;
 }
 
+- (TOCropViewControllerAspectRatioPreset)parseAspectRatioPresetFromName:(NSString*)name {
+    if ([@"square" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPresetSquare;
+    } else if ([@"original" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPresetOriginal;
+    } else if ([@"3x2" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPreset3x2;
+    } else if ([@"4x3" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPreset4x3;
+    } else if ([@"5x3" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPreset5x3;
+    } else if ([@"5x4" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPreset5x4;
+    } else if ([@"7x5" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPreset7x5;
+    } else if ([@"16x9" isEqualToString:name]) {
+        return TOCropViewControllerAspectRatioPreset16x9;
+    } else {
+        return TOCropViewControllerAspectRatioPresetCustom;
+    }
+}
+
 @end
